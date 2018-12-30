@@ -1,0 +1,410 @@
+@import "../../styles.scss";
+@import "../home/home.component.scss";
+
+
+
+// TYPOGRAPHY --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+body {
+  font-family: 'Gugi', cursive; 
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: $color-grey-dark; 
+  padding: 3rem;
+ 
+}
+
+
+
+
+.text-box {                              // & allows me to nest child seclectors into the parent selector.
+  position: absolute;
+  top: 40%;                            // Postion is in relation 50% of the Parent Element
+  left: 50%;                           // Postion is relation 50% of the Parent Element
+  transform: translate(-50%, -50%);    // translate is in relation to the element itself
+  text-align: center;
+  box-shadow: #000000;
+}
+
+.heading-primary {
+ color: $color-primary-light;
+ text-transform: uppercase;            // changes text to uppercase
+ backface-visibility: hidden;          //Hides the back of an element but reduces shakeyness in animation in this trick.
+
+ &-main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;               // spaces out letters
+
+  animation-name: moveInLeft;
+  animation-duration: 2s;
+}
+
+&-sub {
+  display: block;
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 1.75rem;
+  animation-name: moveInLeft;
+  animation-duration: 2s;
+  animation-delay: 0s;
+  backface-visibility: hidden;        // it worked!
+}
+
+&-sub2 {
+  display: block;
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 17.4px;
+  animation-name: moveInLeft;
+  animation-duration: 2s;
+  animation-delay: .2s;
+  backface-visibility: hidden; 
+}
+
+&-sub3 {
+  display: block;
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 1.75rem;
+  animation-name: moveInLeft;
+  animation-duration: 2s;
+  animation-delay: .4s;
+  backface-visibility: hidden; 
+}
+
+&-sub4 {
+  display: block;
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 1.75rem;
+  animation-name: moveInLeft;
+  animation-duration: 2s;
+  animation-delay: .6s;
+  backface-visibility: hidden; 
+}
+
+&-sub5 {
+  display: block;
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 1.75rem;
+  animation-name: moveInLeft;
+  animation-duration: 2s;
+  animation-delay: .8s;
+  backface-visibility: hidden; 
+}
+
+}
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, $color-swizzle-main, $color-primary-dark);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: .2rem;
+  transition: all .2s;
+
+  &:hover {
+      transform: skewY(2deg) skewX(15deg) scale(1.1);
+      text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+
+  }
+
+}
+
+.heading-tertiary {
+font-size: $default-font-size;
+font-weight: 700;
+text-transform: uppercase;
+color: $color-primary-dark;
+}
+
+.paragraph {
+  font-size: $default-font-size;
+  color: $color-primary-dark;
+  &:not(:last-child) {
+  margin-bottom: 3rem;
+  
+  }
+}
+
+// UTILITIES--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.u-center-text { text-align: center;}
+.u-margin-bottom-big {margin-bottom: 8rem;}
+.u-margin-bottom-medium {margin-bottom: 4rem;}
+.u-margin-bottom-small {margin-bottom: 1.5rem;}
+
+// BUTTONS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.btn {
+  &:link,
+  &:visited {                                  //psudeo classes button animation 
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1.5rem 4rem;
+      display: inline-block;
+      border-radius: 200px;
+      transition: all .2s;
+      position: relative;
+      font-size: $default-font-size;                         // fontsize was 16px but changed it to rem 1.6px
+  
+      &:hover {                                        // on btn hover
+          transform: translateY(-3px);                    // only px i did not see changed to em im thinking of small size but will do test.
+          box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
+      }
+  
+      &:active {
+          transform: translateY(-1px);                    //  same here '' also this is when button is active
+          box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
+      }
+  
+  
+  }
+  
+  &-white {
+      background-color: rgb(98, 12, 179);            // color of main button
+      color: $color-primary-light;
+  }
+  
+  &::after {                                       // this is a second button animation in the background
+      content: "";
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      border-radius: 20rem;
+      position: absolute;
+      top: 0;
+      left:0;
+      z-index: -1;
+      transition: all .4s;
+  }
+  
+  &-white::after {
+      background-color: rgb(93, 100, 194);        //color of  background button
+  
+  }
+  
+  &:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);          // button hover effect scaleX(), and sccaleY() used with Transform 
+      opacity: 0;
+  
+  }
+  
+  &-animated {
+      animation: moveInBottom .5s ease-out .75s;
+      animation-fill-mode: backwards;
+  }
+
+}
+
+.btn-text {
+      &:link,
+      &::visited {
+          font-size: 1.6rem;
+          color: $color-aqua-green;
+          display: inline-block;
+          text-decoration: none;
+          border-bottom: 1px solid $color-primary;
+          padding: 3px;
+          transition: all .2s;
+          border-radius: 10rem;
+      }
+
+&:hover {
+  background-color: $color-aqua-green;
+  color: $color-primary;
+  box-shadow: 0 1rem 2rem rgba($color-black, .20);
+  transform: translateY(-2px);
+  
+}
+
+&:active {
+  box-shadow: 0 .5rem 1rem rgba($color-black, .20);
+  transform: translateY(0);
+  
+}
+}
+
+// HeaderSWIZ--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+.headerSwiz {
+  height: 95vh;                                   //height of header is 95% of the view port or view height
+  background-image:linear-gradient(                       
+  to right bottom,
+  #8d43e29f,
+  #5dabf3ad), 
+  url(../../assets/Javelin.jpg);
+  background-size: cover;
+  background-position: top;
+ 
+
+  clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);  // polygon on the right side goes up to 75vh so the diffrance is about 20 vh from the height working with the about section to blend it in.
+
+  
+}
+
+//Grid ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.row {
+  max-width: $grid-width;
+  //background-color: rgb(17, 17, 114);
+  margin: 0 auto;
+  margin-bottom: $gutter-vertical;
+  &:not(:last-child) {
+      // placing margin on everything but the last child "&:not()
+      margin-bottom: $gutter-vertical;
+  }
+
+
+@include clearfix;
+
+[class^="col-"] {                    // the attribute selector [].   ^ start with col- $ ends with col- * all col- picking all elements that start with col-
+  //background-color: rgb(30, 37, 35);
+  float: left;
+  &:not(:last-child) {
+      // using the not psedo class to exclude the last child element from margin.
+      margin-right: $gutter-horizontal;
+  }
+}
+
+  .col-1-of-2 {
+      width: calc((100% - #{$gutter-horizontal}) / 2);
+  }
+
+  .col-1-of-3 {
+      width: calc((100% - 2 * #{$gutter-horizontal}) / 3);    // 100% minus 2x gutter-horizontal divided by 3. 
+  }
+  
+  .col-2-of-3 {
+      width: calc(2 *((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal});  // 2 times the width of the single 1 of 3 column "1-of-3" we multiplyed by 2 and then add the gutter horizontal notice the extra () brackets nedded in order to wrap
+  }
+
+  .col-1-of-4 {
+      width: calc((100% - 3 * #{$gutter-horizontal}) / 4); 
+     
+  }
+
+  .col-2-of-4 {
+      width: calc(2 *((100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal});  
+  }
+
+  .col-3-of-4 {
+      width: calc(3 *((100% - 3 * #{$gutter-horizontal}) / 4) + 2 * #{$gutter-horizontal});  // we multipled by 3 now plus 2 times the gutter horizontal
+  }
+}
+
+
+.section-about {
+  background-image: linear-gradient(to right bottom, #08a7f7a3, #12f853a3), url(../../assets/polaris.png);
+  background-size: cover;
+  background-position: top;
+  padding: 25rem 0;
+  margin-top: -20vh; }
+
+.section-features {
+  padding: 20rem 0;
+  background-image: linear-gradient(to right bottom, #e8ff1953, rgba(238, 40, 245, 0.333)), url(../../assets/hammerhead.jpg);
+  background-size: cover;
+  margin-top: -10rem;
+  transform: skewY(-5deg); }
+
+  //   & > * {  "recived an err msg" Base-level rules cannot contain the parent-selector-referencing char '&' when transforing skew.
+
+  // COMPOSITION-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+  .composition {
+    position: relative;
+
+    &__photo {
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+        border-radius: 2px;
+        position: absolute;
+        z-index: 10;
+        transition: all .2s;
+        outline-offset: 2rem;
+
+        &--p1 {            //Swizzle TV
+            left: 0%;
+            top: -4rem;  
+        }
+        &--p2 {
+            left: 40%;  //Star Citizen Emblem
+            top: -4rem;
+        }
+        &--p3 {         //Vegan Taco
+            left: 40%;
+            top: 10rem;
+        }
+        &--p4 {         //deadlifter
+            left: 0%;  
+            top: 21rem;
+        }
+
+        &--p5 {         //Tech
+            left: 40%;  
+            top: 30rem;
+        }
+
+        &--p6 {         //Film
+            left: -5%;  
+            top: 35rem;
+        }
+
+        &:hover {
+            outline: 1.5rem solid $color-primary-dark;
+            transform: scale(1.05);
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+            z-index: 20;
+        }
+    }
+
+    &:hover &__photo:not(:hover) {      // allows all photos not being hovered to scale down in size a bit. the "not is the keyword that allows it.
+        transform: scale(.9);
+
+    }
+}
+
+// FEATURE BOX------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.feature-box {
+  background-color: rgba($color-white, .8);
+  font-size: 1.4rem;
+  padding: 2.5em;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+  transition: transform .3s;
+  display: grid;
+  
+  
+ 
+  &__icon {
+      font-size: 6rem;
+      margin-bottom: .5rem; 
+      display: inline-block;
+      background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+      -webkit-background-clip: text;
+      color: transparent;
+
+  }
+  &:hover {
+      transform:translateY(-1.5rem) scale(1.03);
+  
+}
+
+ 
+}
+
+/*
+COLORS:
+
+npm run compile:sass  <--- script to run compiler.
+
+*/
